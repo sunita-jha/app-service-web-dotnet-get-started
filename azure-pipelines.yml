@@ -32,10 +32,10 @@ steps:
     
 - task: ExtractFiles@1
   inputs:
-      archiveFilePatterns: '$(build.artifactStagingDirectory)/*.zip'
-      destinationFolder: '$(build.artifactStagingDirectory)'
-      cleanDestinationFolder: true
-      overwriteExistingFiles: false
+    archiveFilePatterns: '///D:/a/1/a/*.zip'
+    destinationFolder: '$(build.artifactStagingDirectory)'
+    cleanDestinationFolder: false
+    overwriteExistingFiles: false
 
 - task: PublishBuildArtifacts@1
   inputs:
