@@ -15,23 +15,35 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- task: NuGetToolInstaller@1
+ - task: SonarQubePrepare@5
+   inputs:
+      SonarQube: 'sonarqube'
+      scannerMode: 'MSBuild'
+      projectKey: 'Learning_Learning_AYPvvpRxNGjNgKusi2G3'
+      projectName: 'Learning'
 
-- task: NuGetCommand@2
-  inputs:
+ - task: NuGetToolInstaller@1
+
+ - task: NuGetCommand@2
+   inputs:
     command: 'restore'
     restoreSolution: '$(solution)'
     feedsToUse: 'select'
 
-- task: VSBuild@1
-  inputs:
+ - task: VSBuild@1
+   inputs:
     solution: '$(solution)'
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+ - task: SonarQubeAnalyze@5
+ - task: SonarQubePublish@5
+   inputs:
+    pollingTimeoutSec: '30'
     
-- task: ExtractFiles@1
-  inputs:
+ - task: ExtractFiles@1
+   inputs:
     archiveFilePatterns: '$(Build.ArtifactStagingDirectory)/*.zip'
     destinationFolder: '$(build.artifactStagingDirectory)'
     cleanDestinationFolder: false
