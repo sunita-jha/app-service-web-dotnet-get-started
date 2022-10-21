@@ -13,9 +13,9 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
-  AZ_NAME: 3fa49fd9-a2e6-4ae5-aef0-f0bc826d1fd1
-  AZ_PWD: gG-8Q~yglY1WulSMKiCLyNDf6lk7Lug-TckOWaK2
-  AZ_TENANT: 6f252721-a924-4a69-8cae-c936ad67fdae
+  # AZ_NAME: 3fa49fd9-a2e6-4ae5-aef0-f0bc826d1fd1
+  # AZ_PWD: gG-8Q~yglY1WulSMKiCLyNDf6lk7Lug-TckOWaK2
+  # AZ_TENANT: 6f252721-a924-4a69-8cae-c936ad67fdae
   container_name: myblobcontainer
   file_to_upload: aspnet-get-started.zip
   blob_name: myblobstoragedemoaccount
