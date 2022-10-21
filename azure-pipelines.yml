@@ -56,8 +56,8 @@ steps:
 #     projects: '**/aspnet-get-started.csproj'
 #     arguments: '--configuration debug'
 
-- task: PublishBuildArtifacts@1
-  inputs:
+ - task: PublishBuildArtifacts@1
+   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
