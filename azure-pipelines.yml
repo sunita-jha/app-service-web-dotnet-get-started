@@ -13,6 +13,12 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  AZ_NAME: 3fa49fd9-a2e6-4ae5-aef0-f0bc826d1fd1
+  AZ_PWD: gG-8Q~yglY1WulSMKiCLyNDf6lk7Lug-TckOWaK2
+  AZ_TENANT: 6f252721-a924-4a69-8cae-c936ad67fdae
+  container_name: myblobcontainer
+  file_to_upload: aspnet-get-started.zip
+  blob_name: myblobstoragedemoaccount
 
 steps:
  - task: SonarQubePrepare@5
@@ -61,3 +67,12 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+
+ - task: AzureCLI@2
+   inputs:
+    azureSubscription: 'Free Trial (7efefb00-e17c-4d85-a4ce-d13264a86786)'
+    scriptType: 'ps'
+    scriptLocation: 'inlineScript'
+    inlineScript: |
+      az login --service-principal -u $AZ_NAME -p $AZ_PWD --tenant $AZ_TENANT
+      az storage blob upload --container-name $container_name --file $file_to_upload --name $blob_name
