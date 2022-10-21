@@ -42,22 +42,22 @@ steps:
    inputs:
     pollingTimeoutSec: '30'
     
-#  - task: ExtractFiles@1
-#    inputs:
-#     archiveFilePatterns: '$(Build.ArtifactStagingDirectory)/*.zip'
-#     destinationFolder: '$(build.artifactStagingDirectory)'
-#     cleanDestinationFolder: false
-#     overwriteExistingFiles: false
-
-
- - task: DotNetCoreCLI@1
+ - task: ExtractFiles@1
    inputs:
-    command: 'test'
-    projects: '**/aspnet-get-started.csproj'
-    arguments: '--configuration debug'
+    archiveFilePatterns: '$(Build.ArtifactStagingDirectory)/*.zip'
+    destinationFolder: '$(build.artifactStagingDirectory)'
+    cleanDestinationFolder: false
+    overwriteExistingFiles: false
 
-# - task: PublishBuildArtifacts@1
-#   inputs:
-#     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-#     ArtifactName: 'drop'
-#     publishLocation: 'Container'
+
+#  - task: DotNetCoreCLI@1
+#    inputs:
+#     command: 'test'
+#     projects: '**/aspnet-get-started.csproj'
+#     arguments: '--configuration debug'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
