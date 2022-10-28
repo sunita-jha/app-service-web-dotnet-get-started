@@ -103,4 +103,4 @@ steps:
      appType: 'webApp'
      appName: 'myawesomewebapp1'
      package: '$(Build.ArtifactStagingDirectory)/**/aspnet-get-started.zip'
-     deploymentMethod: 'zipDeploy'
+     deploymentMethod: 'auto'
