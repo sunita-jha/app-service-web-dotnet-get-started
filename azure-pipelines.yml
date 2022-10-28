@@ -84,3 +84,10 @@ steps:
      Destination: 'AzureBlob'
      storage: 'myblobstoragedemoaccount'
      ContainerName: 'myblobcontainer'
+ - task: AzureRmWebAppDeployment@4
+   inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Free Trial (7efefb00-e17c-4d85-a4ce-d13264a86786)'
+    appType: 'webApp'
+    WebAppName: 'myawesomewebapp1'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
