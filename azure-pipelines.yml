@@ -73,6 +73,13 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+ - task: ArchiveFiles@2
+   inputs:
+     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)/extract\Content\D_C\a\1\s\aspnet-get-started\obj\Release\Package\PackageTmp'
+     includeRootFolder: true
+     archiveType: 'zip'
+     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+     replaceExistingArchive: true
 
 #  - task: AzureCLI@2
 #    inputs:
@@ -85,7 +92,7 @@ steps:
 
  - task: AzureFileCopy@1
    inputs:
-     SourcePath: '$(Build.ArtifactStagingDirectory)'
+     SourcePath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
      azureSubscription: 'Free Trial (7efefb00-e17c-4d85-a4ce-d13264a86786)'
      Destination: 'AzureBlob'
      storage: 'myblobstoragedemoaccount'
@@ -108,5 +115,5 @@ steps:
      azureSubscription: 'Free Trial (7efefb00-e17c-4d85-a4ce-d13264a86786)'
      appType: 'webApp'
      appName: 'myawesomewebapp1'
-     package: '$(Build.ArtifactStagingDirectory)/**/aspnet-get-started.zip'
-     deploymentMethod: 'auto'
+     package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+     deploymentMethod: 'zipDeploy'
