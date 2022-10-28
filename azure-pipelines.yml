@@ -23,10 +23,10 @@ variables:
 steps:
  - task: SonarQubePrepare@5
    inputs:
-      SonarQube: 'sonarqube'
-      scannerMode: 'MSBuild'
-      projectKey: 'Learning_Learning_AYPvvpRxNGjNgKusi2G3'
-      projectName: 'Learning'
+     SonarQube: 'sonarqubetoken'
+     scannerMode: 'MSBuild'
+     projectKey: 'Learning_Learning_AYPvvpRxNGjNgKusi2G3'
+     projectName: 'Learning'
 
  - task: NuGetToolInstaller@1
 
