@@ -85,18 +85,18 @@ steps:
      storage: 'myblobstoragedemoaccount'
      ContainerName: 'myblobcontainer'
   
- - task: AzureCLI@2
-   inputs:
-     azureSubscription: 'Free Trial (7efefb00-e17c-4d85-a4ce-d13264a86786)'
-     scriptType: 'bash'
-     scriptLocation: 'inlineScript'
-     inlineScript: |
-       az storage blob download \
-           --account-name myblobstoragedemoaccount \
-           --container-name myblobcontainer \
-           --name aspnet-get-started.zip \
-           --file $(Build.ArtifactStagingDirectory) \
-           --auth-mode login
+#  - task: AzureCLI@2
+#    inputs:
+#      azureSubscription: 'Free Trial (7efefb00-e17c-4d85-a4ce-d13264a86786)'
+#      scriptType: 'bash'
+#      scriptLocation: 'inlineScript'
+#      inlineScript: |
+#        az storage blob download \
+#            --account-name myblobstoragedemoaccount \
+#            --container-name myblobcontainer \
+#            --name aspnet-get-started.zip \
+#            --file $(Build.ArtifactStagingDirectory) \
+#            --auth-mode login
  - task: AzureWebApp@1
    inputs:
     azureSubscription: 'Free Trial (7efefb00-e17c-4d85-a4ce-d13264a86786)'
