@@ -48,12 +48,12 @@ steps:
    inputs:
     pollingTimeoutSec: '30'
     
- - task: ExtractFiles@1
-   inputs:
-    archiveFilePatterns: '$(Build.ArtifactStagingDirectory)/*.zip'
-    destinationFolder: '$(build.artifactStagingDirectory)'
-    cleanDestinationFolder: false
-    overwriteExistingFiles: false
+#  - task: ExtractFiles@1
+#    inputs:
+#     archiveFilePatterns: '$(Build.ArtifactStagingDirectory)/*.zip'
+#     destinationFolder: '$(build.artifactStagingDirectory)'
+#     cleanDestinationFolder: false
+#     overwriteExistingFiles: false
 
 
 #  - task: DotNetCoreCLI@1
@@ -114,6 +114,6 @@ steps:
    inputs:
      azureSubscription: 'Free Trial (7efefb00-e17c-4d85-a4ce-d13264a86786)'
      appType: 'webApp'
-     appName: 'myawesomewebapp1'
+     appName: 'myawesomeapp12'
      package: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
      deploymentMethod: 'zipDeploy'
