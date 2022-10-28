@@ -62,6 +62,12 @@ steps:
 #     projects: '**/aspnet-get-started.csproj'
 #     arguments: '--configuration debug'
 
+ - task: ExtractFiles@1
+   inputs:
+    archiveFilePatterns: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    destinationFolder: '$(Build.ArtifactStagingDirectory)/extract'
+    cleanDestinationFolder: false
+    overwriteExistingFiles: false
  - task: PublishBuildArtifacts@1
    inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
