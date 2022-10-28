@@ -97,7 +97,12 @@ steps:
      Destination: 'AzureBlob'
      storage: 'myblobstoragedemoaccount'
      ContainerName: 'myblobcontainer'
-  
+#  - task: AzureCLI@2
+#    inputs:
+#       azureSubscription: 'Free Trial (7efefb00-e17c-4d85-a4ce-d13264a86786)'
+#       scriptType: 'bash'
+#       scriptLocation: 'inlineScript'
+#       inlineScript: 'Get-AzStorageBlobContent -Container $(functionName) -Blob $BlobName -Destination $destination_path -Context $storage_account -force'
 #  - task: AzureCLI@2
 #    inputs:
 #      azureSubscription: 'Free Trial (7efefb00-e17c-4d85-a4ce-d13264a86786)'
